@@ -1,0 +1,13 @@
+import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import App from './components/App';
+
+const Routes = () => (
+  <BrowserRouter>
+    <Route exact path="/" component={App}>
+      <Route path="/" component={App} />
+    </Route>
+  </BrowserRouter>
+);
+
+export default Routes;
