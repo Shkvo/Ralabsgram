@@ -21,9 +21,10 @@ a:hover {
   display: flex;
   flex-direction: row;
 }
-.menu a {
+.menu a, span {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 7px;
+  cursor: pointer;
 }
