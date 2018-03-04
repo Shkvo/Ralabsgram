@@ -1,15 +1,6 @@
-const reducer = (state = {}, action) => {
-  switch (action.type) {
-    case 'LOGING':
-      console.log("User is logging...");
-      return state;
-    case 'LOGGED':
-      console.log('User is logged!');
-      return state;
-      
-    default:
-      return state;
-  }
-};
+import { combineReducers } from 'redux';
+import user from './user';
 
-export default reducer;
+export default combineReducers({
+	user,
+});
