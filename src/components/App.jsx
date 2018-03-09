@@ -13,7 +13,7 @@ class App extends Component {
       <div className="app">
         <LeftSideBar {...this.props} />
         <Switch>
-        	<Route exact path="/" component={(props) => <Feed accessToken={this.props.access_token} {...props} />}/>
+        	<Route exact path="/" component={() => <Feed {...this.props} />}/>
           <Route path="*" component={PageNotFound} />
         </Switch>
       </div>
@@ -22,7 +22,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	access_token: state.user.access_token
+	accessToken: state.user.access_token
 });
 
 export default connect(

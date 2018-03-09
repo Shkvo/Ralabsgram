@@ -32,9 +32,15 @@ nav {
   box-shadow: 0 1px 5px rgba(0,0,0,0.2);
 }
 .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: var(--logo-font);
   color: red;
   font-size: 27px;
+}
+.logo img {
+  width: 50px;
 }
 
 

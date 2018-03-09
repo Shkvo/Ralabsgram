@@ -1,52 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { userInfo } from '../endpoints';
+// import logo from '../logo.png';
+import { GET_USER_INFO } from '../actions/types';
 
 class LeftSideBar extends Component {
 
-  state = {
-    userData: {}
-  };
-
-  async componentWillMount() {
-
-    const userData = await axios.get(`${userInfo}?access_token=${this.props.access_token}`);
-
-    this.setState({
-      userData: userData.data.data
-    });
-
+  componentWillMount() {
+    console.log(this.props.accessToken);
+    this.props.getUserInfo(this.props.accessToken);
   }
 
   render() {
-    const userData = this.state.userData;
-    console.log(userData);
+    const userInfo = this.props.userInfo;
+
     return (
-      userData.id ?
+      userInfo.id ?
       <nav>
         <Link to="/">
-          <h1 className="logo">Ralabsgram</h1>
+          <h1 className="logo">
+            {/* <img src={logo} alt="Logo"/> */}
+            Ralabsgram
+          </h1>
         </Link>
         <div className="profile">
-          <img alt="User" src={userData.profile_picture} />
-          <h4>{userData.username}</h4>
+          <img alt="User" src={userInfo.profile_picture} />
+          <h4>{userInfo.username}</h4>
           {
-            userData.bio &&
+            userInfo.bio &&
             <div className="bio">
               {
-                userData.bio.split('\n').map((item, index) => <h5 key={index}>{item}</h5>)
+                userInfo.bio.split('\n').map((item, index) => <h5 key={index}>{item}</h5>)
               }
-              <a href={userData.website}>
-                <h5>{userData.website}</h5>
+              <a href={userInfo.website}>
+                <h5>{userInfo.website}</h5>
               </a>
             </div>
           }
           <div className="user-metrics">
-            <h4>Publications: <span>{userData.counts.media}</span></h4>
-            <Link to="/"><h4>Followers: <span>{userData.counts.followed_by}</span></h4></Link>
-            <Link to="/"><h4>Follows: <span>{userData.counts.follows}</span></h4></Link>
+            <h4>Publications: <span>{userInfo.counts.media}</span></h4>
+            <Link to="/"><h4>Followers: <span>{userInfo.counts.followed_by}</span></h4></Link>
+            <Link to="/"><h4>Follows: <span>{userInfo.counts.follows}</span></h4></Link>
           </div>
         </div>
       </nav> : ''
@@ -54,11 +48,17 @@ class LeftSideBar extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  userInfo: state.user.info,
+});
+
 const mapDispatchToProps = (dispatch) => ({
-  //
+  getUserInfo(accessToken) {
+    dispatch({ type: GET_USER_INFO, payload: accessToken })
+  },
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(LeftSideBar);

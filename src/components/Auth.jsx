@@ -16,6 +16,7 @@ class Auth extends Component {
 
   componentWillMount() {
     if (this.props.location.pathname === '/login/') {
+
       this.access_token = this.props.location.hash.slice(14);
 
       this.props.login(this.access_token);
@@ -28,7 +29,6 @@ class Auth extends Component {
 
   render() {
     const { isLogged } = this.props;
-    console.log(isLogged);
 
     return (
       <MuiThemeProvider>

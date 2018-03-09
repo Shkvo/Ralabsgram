@@ -1,43 +1,43 @@
 import React, { Component } from 'react';
-import { userRecentMedia } from '../endpoints';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { GET_USER_MEDIA } from '../actions/types';
 
 class Feed extends Component {
-	state = {
-		userMedia: []
-	}
 
-	async componentWillMount() {
-		const userMedia = await axios.get(`${userRecentMedia}?access_token=${this.props.accessToken}`);
-
-		this.setState({
-			userMedia: userMedia.data.data
-		})
+	componentWillMount() {
+		this.props.getUserMedia(this.props.accessToken);
 	}
 
 	render() {
-		const { userMedia } = this.state;
-		console.log(userMedia);
-		const newMedia = [...userMedia];
+		const { userMedia } = this.props;
 
-		if (newMedia.length) {
-			newMedia.push(userMedia[1]);
-			newMedia.push(userMedia[0]);
-			newMedia.push(userMedia[1]);
-			newMedia.push(userMedia[0]);
-			newMedia.push(userMedia[1]);
-			newMedia.push(userMedia[2]);
-		}
-
-		const feedMedia = (newMedia || []).map((media, index) => <Link key={index} to="/"><img alt={`Media ${index}`} src={media.images.standard_resolution.url} /></Link>);
+		const feed = (userMedia || [])
+			.map((media, index) => (
+				<Link key={index} to="/">
+					<img alt={`Media ${index}`} src={media.images.standard_resolution.url} />
+				</Link>
+			));
 
 		return (
 			<div className="feed-container">
-				{feedMedia}
+				{feed}
 			</div>
 		)
 	}
 }
 
-export default Feed;
+const mapStateToProps = (state) => ({
+	userMedia: state.user.media,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	getUserMedia(accessToken) {
+		dispatch({ type: GET_USER_MEDIA, payload: accessToken });
+	}
+});
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Feed);
