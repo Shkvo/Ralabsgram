@@ -1,27 +1,86 @@
-.spinner-wrapper {
-  text-align: center;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/**
+*  Variables
+*/
+:root {
+  --main-font: 'Quicksand', sans-serif;
+  --logo-font: 'Kaushan Script', cursive;
+  /* font-family: 'Pacifico', cursive; */
+  /* font-family: 'Yesteryear', cursive; */
+  /* font-family: 'Work Sans', sans-serif; */
+  /* font-family: 'Varela Round', sans-serif; */
+  /* font-family: 'Comfortaa', cursive; */
 }
-header {
+
+
+/**
+* App styles
+*/
+.app {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  height: 100vh;
+}
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  height: 60px;
-  width: 100%;
+  height: 100vh;
+  width: 20%;
+  min-width: 200px;
+  max-width: 300px;
   box-shadow: 0 1px 5px rgba(0,0,0,0.2);
 }
-a {
-  text-decoration: none;
-  color: #000;
-  transition: .3s ease-in-out all;
+.logo {
+  font-family: var(--logo-font);
+  color: red;
+  font-size: 27px;
 }
-a:hover {
-  color: rgba(0,0,0,0.7);
+
+
+/**
+* Profile styles
+*/
+.profile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
+.profile {
+  margin-top: 20px;
+}
+.profile img {
+  border-radius: 50%;
+}
+.profile h4 {
+  margin: 5px 0px;
+  margin-bottom: 20px;
+  color: rgb(100, 100, 100);
+  font-family: var(--main-font);
+  font-size: 20px;
+}
+.profile .user-metrics h4 {
+  font-size: 18px;
+  padding: 5px 0px;
+  font-family: var(--main-font);
+  margin: 0;
+  color: rgb(120, 120, 120);
+}
+.profile .user-metrics {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.profile .user-metrics span {
+  display: inline-flex;
+  color: rgb(100, 100, 100);
+}
+
+
+/**
+* Menu styles
+*/
 .menu {
   display: flex;
   flex-direction: row;
@@ -32,4 +91,73 @@ a:hover {
   align-items: center;
   padding: 0 7px;
   cursor: pointer;
+}
+
+
+/**
+* Feed styles
+*/
+.feed-container {
+  width: 100%;
+  align-self: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+  overflow: scroll;
+  flex-flow: wrap;
+}
+.feed-container a {
+  width: 400px;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.feed-container img {
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  background-size: cover;
+  background-position: bottom center;
+}
+
+
+/**
+* Bio styles
+*/
+.bio {
+  padding: 0 25px;
+  margin-bottom: 20px;
+}
+.bio h5 {
+  color: rgb(120, 120, 120);
+  font-size: 12px;
+  margin: 1px;
+}
+.bio a > h5 {
+  text-decoration: underline;
+}
+
+
+/**
+* Other styles
+*/
+.spinner-wrapper {
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+  color: #000;
+  transition: .3s ease-in-out all;
+}
+a:hover {
+  color: rgba(0,0,0,0.7)
 }
