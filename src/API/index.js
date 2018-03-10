@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {
   userRecentMediaURL,
-  userInfoURL
+  userInfoURL,
+  getMediaDetailsURL
 } from '../endpoints';
 
 /**
@@ -23,6 +24,13 @@ export default {
     const userInfo = await axios.get(`${userInfoURL}?access_token=${accessToken}`);
 
     return userInfo.data.data;
+  },
+
+  async getMediaDetails(data) {
+    const mediaDetailsURL = getMediaDetailsURL(data.id);
+    const mediaDetails = await axios.get(`${mediaDetailsURL}?access_token=${data.accessToken}`);
+
+    return mediaDetails.data.data;
   },
 
 };

@@ -1,5 +1,6 @@
 import { all } from 'redux-saga/effects';
 import userSaga from './user';
+import mediaSaga from './media';
 
 /**
  *  @function rootSaga
@@ -9,5 +10,6 @@ import userSaga from './user';
 export default function* rootSaga() {
   yield all([
     userSaga(),
+    mediaSaga()
   ]);
 }

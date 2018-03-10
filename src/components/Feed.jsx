@@ -14,7 +14,7 @@ class Feed extends Component {
 
 		const feed = (userMedia || [])
 			.map((media, index) => (
-				<Link key={index} to="/">
+				<Link key={index} to={`/media/${media.id}`}>
 					<img alt={`Media ${index}`} src={media.images.standard_resolution.url} />
 				</Link>
 			));

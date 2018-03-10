@@ -7,7 +7,6 @@ import { GET_USER_INFO } from '../actions/types';
 class LeftSideBar extends Component {
 
   componentWillMount() {
-    console.log(this.props.accessToken);
     this.props.getUserInfo(this.props.accessToken);
   }
 

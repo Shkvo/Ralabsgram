@@ -13,7 +13,8 @@ const initialState = {
 		info: {},
 		media: []
 	},
-}
+	mediaDetails: {},
+};
 
 const middlewares = applyMiddleware(
   saga
