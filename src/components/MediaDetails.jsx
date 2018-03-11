@@ -52,7 +52,10 @@ class MediaDetails extends Component {
 					<i className="fas fa-chevron-left" />
 				</div>
 				<section>
-					<img alt="main" src={mediaDetails.images.standard_resolution.url} />
+					<div className="media-details-photo">
+						<img alt="main" src={mediaDetails.images.standard_resolution.url} />			
+						<i className="fas fa-heart" />									
+					</div>
 					<aside>
 						<div className="user">
 							<img src={mediaDetails.user.profile_picture} alt="User" />

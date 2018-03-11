@@ -272,7 +272,30 @@ input {
   transform: translate(0, -50%);
   color: rgb(120, 120, 120);
 }
-
+.media-details-photo {
+  position: relative;
+  height: 100%;
+  cursor: pointer;
+}
+.media-details-photo .fa-heart {
+  color: red;
+  opacity: 0;
+  height: 50px;
+  width: 50px;
+  font-size: 100px;
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: .3s ease-in-out all;
+}
+.media-details-photo:hover > .fa-heart {
+  opacity: 0.5;
+  height: 110px;
+  width: 110px;
+  font-size: 110px;
+}
 /**
 * Other styles
 */
