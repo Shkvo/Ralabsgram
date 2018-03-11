@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CircularProgress from 'material-ui/CircularProgress';
-import { GET_MEDIA_DETAILS } from '../actions/types';
+import { GET_MEDIA_DETAILS, GET_MEDIA_COMMENTS } from '../actions/types';
 import Spinner from './Spinner';
 
 class MediaDetails extends Component {
@@ -14,6 +15,7 @@ class MediaDetails extends Component {
 		const mediaID = this.props.location.pathname.slice('7');
 
 		this.props.getMediaDetails(mediaID, this.props.accessToken);
+		this.props.getMediaComments(mediaID, this.props.accessToken);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -31,13 +33,21 @@ class MediaDetails extends Component {
 	}
 
 	render() {
-		const { mediaDetails } = this.props;
-		// console.log(mediaDetails);
+		const { mediaDetails, mediaComments } = this.props;
+		console.log(mediaDetails);
+		console.log(mediaComments);
 
 		if (this.state.loading) {
 			return <Spinner />;
 		}
 
+		const comments = mediaComments.map((comment, index) => (
+			<p key={index}>
+				<Link to="/">{comment.from.username}</Link>
+				{comment.text}
+			</p>
+		));
+		
 		return (
 			<div className="media-details">
 				<div onClick={this.getHistoryPreviousPath}>
@@ -57,6 +67,9 @@ class MediaDetails extends Component {
 								</h5>
 							</div>
 						</div>
+						<div className="comments">
+							{comments}
+						</div>
 					</aside>
 				</section>
 			</div>
@@ -66,12 +79,16 @@ class MediaDetails extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	mediaDetails: state.mediaDetails,
+	mediaDetails: state.media.details,
+	mediaComments: state.media.comments
 });
 
 const mapDispatchToProps = (dispatch) => ({
 	getMediaDetails(id ,accessToken) {
 		dispatch({ type: GET_MEDIA_DETAILS, payload: { id, accessToken } });
+	},
+	getMediaComments(id ,accessToken) {
+		dispatch({ type: GET_MEDIA_COMMENTS, payload: { id, accessToken } });
 	}
 });
 

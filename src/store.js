@@ -13,7 +13,10 @@ const initialState = {
 		info: {},
 		media: []
 	},
-	mediaDetails: {},
+	media: {
+		details: {},
+		comments: []
+	},
 };
 
 const middlewares = applyMiddleware(

@@ -166,17 +166,18 @@ nav {
 }
 .media-details .fa-angle-left {
   position: absolute;
-  height: 20px;
-  width: 20px;
+  height: 40px;
+  width: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 20px;
+  top: 13px;
   left: 20px;
   font-size: 40px;
   font-weight: 100;
   transition: .2s all ease-in-out;
   cursor: pointer;
+  color: rgb(120, 120, 120);
 }
 .media-details .fa-angle-left:hover {
   color: red;
@@ -220,7 +221,26 @@ nav {
   border-radius: 50%;
   width: 50px;
 }
-
+.media-details .comments {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 14px;
+  flex-direction: column;
+}
+.media-details .comments p {
+  margin-top: 10px;
+  margin-bottom: 0;
+  color: rgb(120,120,120);
+}
+.media-details .comments a {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-weight: bold;
+  font-size: 16px;
+  color: rgb(100, 100, 100);
+}
 
 /**
 * Other styles
