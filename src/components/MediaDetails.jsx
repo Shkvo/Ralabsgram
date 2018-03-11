@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import CircularProgress from 'material-ui/CircularProgress';
 import { GET_MEDIA_DETAILS, GET_MEDIA_COMMENTS } from '../actions/types';
 import Spinner from './Spinner';
 
 class MediaDetails extends Component {
 
 	state = {
-		loading: true
+		loading: true,
 	}
 
 	componentWillMount() {
@@ -30,12 +29,11 @@ class MediaDetails extends Component {
 
 	getHistoryPreviousPath = () => {
 		this.props.history.go(-1);
-	}
+	};
 
 	render() {
 		const { mediaDetails, mediaComments } = this.props;
-		console.log(mediaDetails);
-		console.log(mediaComments);
+		// console.log(mediaDetails);
 
 		if (this.state.loading) {
 			return <Spinner />;
@@ -51,7 +49,7 @@ class MediaDetails extends Component {
 		return (
 			<div className="media-details">
 				<div onClick={this.getHistoryPreviousPath}>
-					<i className="fas fa-angle-left" />
+					<i className="fas fa-chevron-left" />
 				</div>
 				<section>
 					<img alt="main" src={mediaDetails.images.standard_resolution.url} />
@@ -69,6 +67,12 @@ class MediaDetails extends Component {
 						</div>
 						<div className="comments">
 							{comments}
+						</div>
+						<div className="comment-input">
+							<input onBlur={this.handleCommentsInputFocus} onFocus={this.handleCommentsInputFocus} type="text" placeholder="Add a comment..."/>
+							<div className="send-button-wrapper">
+								<i className="fas fa-paper-plane" />
+							</div>
 						</div>
 					</aside>
 				</section>
