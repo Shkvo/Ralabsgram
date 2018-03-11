@@ -19,6 +19,7 @@
   display: flex;
   flex-direction: row;
   height: 100vh;
+  background: rgba(0,0,0,0.03)
 }
 nav {
   display: flex;
@@ -30,6 +31,8 @@ nav {
   min-width: 200px;
   max-width: 240px;
   box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+  background: #fff;
+
 }
 .logo {
   display: flex;
@@ -145,6 +148,77 @@ nav {
 }
 .bio a > h5 {
   text-decoration: underline;
+}
+
+
+/**
+* Media details styles
+*/
+.media-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  font-family: var(--main-font);
+  color: rgb(100, 100, 100);
+  position: relative;
+}
+.media-details .fa-angle-left {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 20px;
+  left: 20px;
+  font-size: 40px;
+  font-weight: 100;
+  transition: .2s all ease-in-out;
+  cursor: pointer;
+}
+.media-details .fa-angle-left:hover {
+  color: red;
+}
+.media-details section {
+  height: 85%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+  background: #fff;
+}
+.media-details section img{
+  height: 100%;
+}
+.media-details aside {
+  width: 240px;
+  padding: 20px;
+  overflow: scroll;
+}
+.media-details .user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid rgb(230, 230, 230);
+  padding-bottom: 10px;
+}
+.media-details .user h4, h5 {
+  margin: 0;
+}
+.media-details .user h5 {
+  color: rgb(120, 120, 120);
+}
+.media-details .user img{
+  border-radius: 50%;
+  width: 50px;
+  margin-right: 10px;
+}
+.media-details .user img{
+  border-radius: 50%;
+  width: 50px;
 }
 
 

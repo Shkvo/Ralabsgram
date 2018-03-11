@@ -4,7 +4,7 @@ import creds from '../credentials.json';
 import { LOGIN } from '../actions/types';
 import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import CircularProgress from 'material-ui/CircularProgress';
+import Spinner from './Spinner';
 
 const authorizationURL = 'https://api.instagram.com/oauth/authorize/?client_id=' +
   creds.CLIENT_ID + '&redirect_uri=' +
@@ -33,13 +33,7 @@ class Auth extends Component {
     return (
       <MuiThemeProvider>
         {
-          isLogged ?
-
-            this.props.children :
-
-            <div className="spinner-wrapper">
-              <CircularProgress color="purple" />
-            </div>
+          isLogged ? this.props.children : <Spinner />
         }
       </MuiThemeProvider>
     );
