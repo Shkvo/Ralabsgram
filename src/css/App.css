@@ -203,6 +203,8 @@ input {
   flex-direction: row;
   box-shadow: 0 1px 5px rgba(0,0,0,0.2);
   background: #fff;
+  position: relative;
+  
 }
 .media-details section img{
   height: 100%;
@@ -244,10 +246,26 @@ input {
   height: 60%;
   overflow: scroll;
 }
+.media-details .comments .user-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+}
 .media-details .comments p {
+  width: 100%;
   margin-top: 10px;
   margin-bottom: 0;
   color: rgb(120, 120, 120);
+}
+.media-details .comments p .fa-times {
+  color: red;
+  opacity: 0;
+  transition: .2s ease-in-out all;
+}
+.media-details .comments p:hover .fa-times {
+  opacity: 1;
 }
 .media-details .comments a {
   display: flex;
@@ -260,7 +278,8 @@ input {
 .media-details .comment-input {
   margin-top: 10px;
   width: 240px;
-  position: relative;
+  bottom: 20px;
+  position: absolute;
 }
 .media-details .comment-input .send-button-wrapper {
   cursor: pointer;
@@ -288,7 +307,7 @@ input {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: .3s ease-in-out all;
+  transition: .2s ease-in-out all;
 }
 .media-details-photo:hover > .fa-heart {
   opacity: 0.5;

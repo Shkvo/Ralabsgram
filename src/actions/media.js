@@ -28,7 +28,7 @@ export function* getMediaDetails(action) {
 /**
  * @function getMediaComments
  * @param {object} action
- * @description gets the user media from Instagram
+ * @description gets the media comments from Instagram
  */
 
 export function* getMediaComments(action) {
@@ -49,6 +49,6 @@ export function* getMediaComments(action) {
 export default function* userSaga() {
   yield all([
     takeEvery(GET_MEDIA_DETAILS, getMediaDetails),
-    takeEvery(GET_MEDIA_COMMENTS, getMediaComments)
+    takeEvery(GET_MEDIA_COMMENTS, getMediaComments) 
   ]);
 }

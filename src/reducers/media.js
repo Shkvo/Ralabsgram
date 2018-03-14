@@ -1,6 +1,8 @@
 import {
   GET_MEDIA_DETAILS_SUCCESS,
-  GET_MEDIA_COMMENTS_SUCCESS
+  GET_MEDIA_COMMENTS_SUCCESS,
+  POST_MEDIA_COMMENT,
+  DELETE_MEDIA_COMMENT
 } from '../actions/types';
 
 export default (state = {}, action) => {
@@ -16,6 +18,21 @@ export default (state = {}, action) => {
       return {
         ...state,
         comments: action.payload
+      };
+
+    case POST_MEDIA_COMMENT:
+      return {
+        ...state,
+        comments: [...state.comments].concat(action.payload)
+      };
+
+    case DELETE_MEDIA_COMMENT:
+      const comments = [...state.comments];
+      comments.splice(action.payload, 1);
+      
+      return {
+        ...state,
+        comments
       };
 
     default:
