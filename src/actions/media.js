@@ -6,7 +6,10 @@ import {
   GET_MEDIA_DETAILS_FAILED,
   GET_MEDIA_COMMENTS,
   GET_MEDIA_COMMENTS_SUCCESS,
-  GET_MEDIA_COMMENTS_FAILED
+  GET_MEDIA_COMMENTS_FAILED,
+  GET_MEDIA_LIKES,
+  GET_MEDIA_LIKES_SUCCESS,
+  GET_MEDIA_LIKES_FAILED,
 } from './types';
 
 /**
@@ -42,6 +45,22 @@ export function* getMediaComments(action) {
 }
 
 /**
+ * @function getMediaLikes
+ * @param {object} action
+ * @description gets the media comments from Instagram
+ */
+
+export function* getMediaLikes(action) {
+  try {
+    const mediaLikes = yield call(API.getMediaLikes, action.payload);
+    yield put({ type: GET_MEDIA_LIKES_SUCCESS, payload: mediaLikes });
+  } catch (e) {
+    yield put({ type: GET_MEDIA_LIKES_FAILED });
+    throw e;
+  }
+}
+
+/**
  * @function mediaSaga
  * @description main function, that watches for some action types
  */
@@ -49,6 +68,7 @@ export function* getMediaComments(action) {
 export default function* userSaga() {
   yield all([
     takeEvery(GET_MEDIA_DETAILS, getMediaDetails),
-    takeEvery(GET_MEDIA_COMMENTS, getMediaComments) 
+    takeEvery(GET_MEDIA_COMMENTS, getMediaComments),
+    takeEvery(GET_MEDIA_LIKES, getMediaLikes)
   ]);
 }

@@ -3,3 +3,4 @@ export const userInfoURL = `${instagramAPI}/users/self/`;
 export const userRecentMediaURL = `${instagramAPI}/users/self/media/recent/`;
 export const getMediaDetailsURL = (mediaID) => `${instagramAPI}/media/${mediaID}`;
 export const getMediaCommentsURL = (mediaID) => `${instagramAPI}/media/${mediaID}/comments`;
+export const getMediaLikesURL = (mediaID) => `${instagramAPI}/media/${mediaID}/likes`;

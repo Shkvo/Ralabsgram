@@ -296,7 +296,7 @@ input {
   height: 100%;
   cursor: pointer;
 }
-.media-details-photo .fa-heart {
+.media-details-photo .main-heart {
   color: red;
   opacity: 0;
   height: 50px;
@@ -309,11 +309,37 @@ input {
   transform: translate(-50%, -50%);
   transition: .2s ease-in-out all;
 }
-.media-details-photo:hover > .fa-heart {
+.media-details-photo:hover .main-heart {
   opacity: 0.5;
   height: 110px;
   width: 110px;
-  font-size: 110px;
+}
+.media-details-photo .likes {
+  color: red;  
+  height: 40px;
+  width: 40px;
+  font-size: 100px;
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.media-details-photo .likes-container {
+  opacity: 0.5;
+  color: white;  
+  position: absolute;
+  bottom: 30px;
+  left: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.media-details-photo .likes-container > span {
+  position: absolute;
+  z-index: 2;
+  color: #ffffff;
 }
 /**
 * Other styles

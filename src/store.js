@@ -15,7 +15,8 @@ const initialState = {
 	},
 	media: {
 		details: {},
-		comments: []
+		comments: [],
+		likes: []
 	},
 };
 

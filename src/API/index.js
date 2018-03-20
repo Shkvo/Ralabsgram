@@ -3,8 +3,9 @@ import {
   userRecentMediaURL,
   userInfoURL,
   getMediaDetailsURL,
-  getMediaCommentsURL
-} from '../endpoints';
+  getMediaCommentsURL,
+  getMediaLikesURL  
+} from './endpoints';
 
 /**
  * @namespace API
@@ -12,6 +13,7 @@ import {
  * @property {function} getUserInfo
  * @property {function} getMediaDetails
  * @property {function} getMediaComments
+ * @property {function} getMediaLikes
  * @description API object with methods, which sends requests to Instagram API
  */
 
@@ -41,6 +43,13 @@ export default {
     const mediaComments = await axios.get(`${mediaCommentsURL}?access_token=${data.accessToken}`);
 
     return mediaComments.data.data;
+  },
+
+  async getMediaLikes(data) {
+    const mediaLikesURL = getMediaLikesURL(data.id);
+    const mediaLikes = await axios.get(`${mediaLikesURL}?access_token=${data.accessToken}`);
+    
+    return mediaLikes.data.data;
   },
 
 };

@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { GET_MEDIA_DETAILS, GET_MEDIA_COMMENTS, POST_MEDIA_COMMENT, DELETE_MEDIA_COMMENT } from '../actions/types';
+import { 
+	GET_MEDIA_LIKES,
+	GET_MEDIA_DETAILS,
+	GET_MEDIA_COMMENTS,
+	POST_MEDIA_COMMENT, 
+	DELETE_MEDIA_COMMENT,
+	POST_MEDIA_LIKE,
+	DELETE_MEDIA_LIKE
+} from '../actions/types';
+
 import Spinner from './Spinner';
 
 class MediaDetails extends Component {
 
 	state = {
 		loading: true,
-		commentText: ''
+		commentText: '',
 	}
 
 	componentWillMount() {
@@ -16,11 +25,12 @@ class MediaDetails extends Component {
 
 		this.props.getMediaDetails(mediaID, this.props.accessToken);
 		this.props.getMediaComments(mediaID, this.props.accessToken);
+		this.props.getMediaLikes(mediaID, this.props.accessToken);
 	}
 
 	componentWillReceiveProps(nextProps) {
 		const isReceivedNewProps = JSON.stringify(this.props.mediaDetails) !== JSON.stringify(nextProps.mediaDetails);
-
+		
 		if (isReceivedNewProps) {
 			this.setState({
 				loading: false
@@ -36,7 +46,7 @@ class MediaDetails extends Component {
 		this.setState({
 			commentText: event.target.value
 		})
-	}
+	};
 
 	handleCommentPost = () => {
 		const { userInfo, postMediaComment } = this.props;
@@ -47,17 +57,29 @@ class MediaDetails extends Component {
 		});
 		
 		postMediaComment(userInfo.username, commentText);
-	}
+	};
 
 	handleCommentDelete = (commentID) => {
 		const { deleteMediaComment } = this.props;
 
 		deleteMediaComment(commentID);
-	}
+	};
+
+	handleLikeChange = () => {
+		const { deleteMediaLike, postMediaLike, userInfo, mediaLikes } = this.props;
+		const isUserLiked = mediaLikes.find((like) => like.id === userInfo.id);
+		
+		if (isUserLiked) {
+			deleteMediaLike(userInfo.id);
+		} else {
+			postMediaLike(userInfo.id, userInfo.username);
+		}
+
+	};
 
 	render() {
-		const { mediaDetails, mediaComments } = this.props;
-
+		const { mediaDetails, mediaComments, mediaLikes } = this.props;
+		
 		if (this.state.loading) {
 			return <Spinner />;
 		}
@@ -80,9 +102,13 @@ class MediaDetails extends Component {
 					<i className="fas fa-chevron-left" />
 				</div>
 				<section>
-					<div className="media-details-photo">
+					<div className="media-details-photo" onClick={this.handleLikeChange}>
 						<img alt="main" src={mediaDetails.images.standard_resolution.url} />
-						<i className="fas fa-heart" />
+						<i className="fas fa-heart main-heart" />
+						<div className="likes-container">
+							<span>{ mediaLikes.length }</span>
+							<i className="fas fa-heart likes" />
+						</div>
 					</div>
 					<aside>
 						<div className="user">
@@ -116,6 +142,7 @@ class MediaDetails extends Component {
 const mapStateToProps = (state) => ({
 	mediaDetails: state.media.details,
 	mediaComments: state.media.comments,
+	mediaLikes: state.media.likes,
 	userInfo: state.user.info
 });
 
@@ -131,6 +158,15 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	deleteMediaComment(id) {
 		dispatch({ type: DELETE_MEDIA_COMMENT, payload: id });
+	},
+	getMediaLikes(id, accessToken) {
+		dispatch({ type: GET_MEDIA_LIKES, payload: { id, accessToken } });
+	},
+	postMediaLike(id, username) {
+		dispatch({ type: POST_MEDIA_LIKE, payload: {id , username } });
+	},
+	deleteMediaLike(id) {
+		dispatch({ type: DELETE_MEDIA_LIKE, payload: id });
 	}
 });
 

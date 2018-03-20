@@ -1,8 +1,11 @@
 import {
+  POST_MEDIA_COMMENT,
+  DELETE_MEDIA_COMMENT,
+  POST_MEDIA_LIKE,
+  DELETE_MEDIA_LIKE,
+  GET_MEDIA_LIKES_SUCCESS,
   GET_MEDIA_DETAILS_SUCCESS,
   GET_MEDIA_COMMENTS_SUCCESS,
-  POST_MEDIA_COMMENT,
-  DELETE_MEDIA_COMMENT
 } from '../actions/types';
 
 export default (state = {}, action) => {
@@ -20,6 +23,12 @@ export default (state = {}, action) => {
         comments: action.payload
       };
 
+    case GET_MEDIA_LIKES_SUCCESS:
+      return {
+        ...state,
+        likes: action.payload
+      };
+
     case POST_MEDIA_COMMENT:
       return {
         ...state,
@@ -29,10 +38,33 @@ export default (state = {}, action) => {
     case DELETE_MEDIA_COMMENT:
       const comments = [...state.comments];
       comments.splice(action.payload, 1);
-      
+
       return {
         ...state,
         comments
+      };
+
+    case POST_MEDIA_LIKE:
+      const {
+        id,
+        username
+      } = action.payload;
+
+      return {
+        ...state,
+        likes: [...state.likes].concat({
+          id,
+          username
+        })
+      };
+
+    case DELETE_MEDIA_LIKE:
+      const likes = [...state.likes];
+      const filteredLikes = likes.filter((like) => like.id !== action.payload);
+
+      return {
+        ...state,
+        likes: filteredLikes
       };
 
     default:
