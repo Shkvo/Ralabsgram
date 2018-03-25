@@ -29,6 +29,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
     "jest": "^22.0.4",
+    "jsdoc": "^3.5.5",
     "redux-devtools-extension": "^2.13.2"
   }
 }

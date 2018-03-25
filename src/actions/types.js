@@ -1,6 +1,6 @@
-/**
- * User action types
- */
+/*
+* User action types
+*/
 
 export const LOGIN = 'LOGIN';
 
@@ -21,9 +21,9 @@ export const GET_USER_FOLLOWED_BY_SUCCESS = 'GET_USER_FOLLOWED_BY_SUCCESS';
 export const GET_USER_FOLLOWED_BY_FAILED = 'GET_USER_FOLLOWED_BY_FAILED';
 
 
-/**
- * Media action types
- */
+/*
+* Media action types
+*/
 
 export const GET_MEDIA_DETAILS = 'GET_MEDIA_DETAILS';
 export const GET_MEDIA_DETAILS_SUCCESS = 'GET_MEDIA_DETAILS_SUCCESS';

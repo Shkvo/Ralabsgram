@@ -11,8 +11,10 @@ import {
 
 /**
  * @function getUserMedia
- * @param {object} action
- * @description gets the user media from Instagram
+ * @generator
+ * @param {object} action Data object needed to make requests for user media
+ * @yields Function
+ * @description gets the user media from Instagram API
  */
 
 export function* getUserMedia(action) {
@@ -27,8 +29,10 @@ export function* getUserMedia(action) {
 
 /**
  * @function getUserInfo
- * @param {object} action
- * @description gets the user info from Instagram
+ * @generator
+ * @param {object} action Data object needed to make requests for user info
+ * @yields Function
+ * @description gets the user info from Instagram API
  */
 
 export function* getUserInfo(action) {
@@ -43,6 +47,8 @@ export function* getUserInfo(action) {
 
 /**
  * @function userSaga
+ * @generator
+ * @yields Function
  * @description main function, that watches for some action types
  */
 

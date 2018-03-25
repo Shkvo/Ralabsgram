@@ -4,6 +4,7 @@ import mediaSaga from './media';
 
 /**
  *  @function rootSaga
+ *  @yields Function
  *  @description root function that handles all sagas
  */
 

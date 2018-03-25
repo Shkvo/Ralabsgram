@@ -14,8 +14,10 @@ import {
 
 /**
  * @function getMediaDetails
- * @param {object} action
- * @description gets the user media from Instagram
+ * @generator
+ * @param {object} action Data object needed to make requests for media details
+ * @yields Function
+ * @description Gets the user media from Instagram API
  */
 
 export function* getMediaDetails(action) {
@@ -30,8 +32,10 @@ export function* getMediaDetails(action) {
 
 /**
  * @function getMediaComments
- * @param {object} action
- * @description gets the media comments from Instagram
+ * @generator
+ * @param {object} action Data object needed to make requests for media comments
+ * @yields Function
+ * @description Gets the media comments from Instagram API
  */
 
 export function* getMediaComments(action) {
@@ -46,8 +50,10 @@ export function* getMediaComments(action) {
 
 /**
  * @function getMediaLikes
- * @param {object} action
- * @description gets the media comments from Instagram
+ * @generator
+ * @param {object} action Data object needed to make requests for media comments
+ * @yield Function
+ * @description Gets the media comments from Instagram API
  */
 
 export function* getMediaLikes(action) {
@@ -62,7 +68,9 @@ export function* getMediaLikes(action) {
 
 /**
  * @function mediaSaga
- * @description main function, that watches for some action types
+ * @generator
+ * @description Main function, that watches for defined bellow action types
+ * @yields Function
  */
 
 export default function* userSaga() {
