@@ -5,12 +5,18 @@ import {
   DELETE_MEDIA_LIKE,
   GET_MEDIA_LIKES_SUCCESS,
   GET_MEDIA_DETAILS_SUCCESS,
-  GET_MEDIA_COMMENTS_SUCCESS,
-} from '../actions/types';
+  GET_MEDIA_COMMENTS_SUCCESS
+} from "../actions/types";
+
+/**
+ * @function mediaReducer
+ * @param {object} state A peace of redux store to manipulate with it
+ * @param {object} action Data object with type of action and in some cases with payload
+ * @description Changes previous state depending on action type and provided data
+ */
 
 export default (state = {}, action) => {
   switch (action.type) {
-
     case GET_MEDIA_DETAILS_SUCCESS:
       return {
         ...state,
@@ -45,10 +51,7 @@ export default (state = {}, action) => {
       };
 
     case POST_MEDIA_LIKE:
-      const {
-        id,
-        username
-      } = action.payload;
+      const { id, username } = action.payload;
 
       return {
         ...state,
@@ -60,7 +63,7 @@ export default (state = {}, action) => {
 
     case DELETE_MEDIA_LIKE:
       const likes = [...state.likes];
-      const filteredLikes = likes.filter((like) => like.id !== action.payload);
+      const filteredLikes = likes.filter(like => like.id !== action.payload);
 
       return {
         ...state,
