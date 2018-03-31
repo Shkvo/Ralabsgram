@@ -7,7 +7,7 @@ import PageNotFound from './404';
 import MediaDetails from  './MediaDetails'
 import { connect } from 'react-redux';
 
-class App extends Component {
+export class App extends Component {
 
   render() {
     return (
@@ -28,6 +28,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default withRouter(connect(
-	mapStateToProps,
-	null
+	mapStateToProps
 )(App));

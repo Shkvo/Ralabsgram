@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { GET_USER_MEDIA } from '../actions/types';
 
-class Feed extends Component {
+export class Feed extends Component {
 
 	componentWillMount() {
 		this.props.getUserMedia(this.props.accessToken);

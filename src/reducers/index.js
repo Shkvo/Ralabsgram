@@ -5,7 +5,7 @@ import media from './media';
 /**
  * @function combineReducers
  * @param {object} reducer Object with reducers
- * @description Combines provided object reducers
+ * @description Combines provided in object reducers
  * @returns Proper object with passed peaces of state to reducers
  */
 

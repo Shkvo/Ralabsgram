@@ -13,7 +13,7 @@ import {
 
 import Spinner from './Spinner';
 
-class MediaDetails extends Component {
+export class MediaDetails extends Component {
 
 	state = {
 		loading: true,

@@ -10,7 +10,7 @@ const authorizationURL = 'https://api.instagram.com/oauth/authorize/?client_id='
   creds.CLIENT_ID + '&redirect_uri=' +
   creds.REDIRECT_URI + '&response_type=token';
 
-class Auth extends Component {
+export class Auth extends Component {
 
   access_token = '';
 

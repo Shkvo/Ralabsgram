@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import logo from '../logo.png';
 import { GET_USER_INFO } from '../actions/types';
 
-class LeftSideBar extends Component {
+export class LeftSideBar extends Component {
 
   componentWillMount() {
     this.props.getUserInfo(this.props.accessToken);
