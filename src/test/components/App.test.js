@@ -2,28 +2,9 @@ import React from 'react';
 import App from '../../components/App';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
-import configureStore from 'redux-mock-store';
-import createSagaMiddleware from 'redux-saga';
-
-const saga = createSagaMiddleware();
-const middlewares = [saga];
-const mockStore = configureStore(middlewares);
+import { store } from '../mockedData';
 
 let wrapper = null;
-
-const store = mockStore({
-  user: {
-    isLogged: false,
-    access_token: '',
-    info: {},
-    media: []
-  },
-  media: {
-    details: {},
-    comments: [],
-    likes: []
-  }
-});
 
 describe('<App /> component:', () => {
   beforeEach(() => {
@@ -44,20 +25,20 @@ describe('<App /> component:', () => {
   });
 
   test('Renders children properly', () => {
-    const app = wrapper.find('App').children();
+    const children = wrapper.find('App').children();
 
-    expect(app.children().length).toEqual(2);
+    expect(children.children().length).toEqual(2);
     expect(
-      app
+      children
         .childAt(0)
         .find('LeftSideBar')
         .exists()
     ).toBeTruthy;
 
-    expect(app.childAt(1).name()).toEqual('Switch');
-    expect(app.childAt(1).children().length).toEqual(1);
+    expect(children.childAt(1).name()).toEqual('Switch');
+    expect(children.childAt(1).children().length).toEqual(1);
     expect(
-      app
+      children
         .childAt(1)
         .children()
         .find('Feed')
