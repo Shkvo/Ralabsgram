@@ -9,7 +9,18 @@ export const store = mockStore({
   user: {
     isLogged: false,
     access_token: '',
-    info: {},
+    info: {
+      id: 4,
+      profile_picture: 'test picture url',
+      username: 'test name',
+      bio: 'test bio',
+      website: 'test website',
+      counts: {
+        media: 10,
+        followed_by: 34,
+        follows: 14
+      }
+    },
     media: []
   },
   media: {

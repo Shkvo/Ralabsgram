@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import logo from '../logo.png';
 import { GET_USER_INFO } from '../actions/types';
 
 export class LeftSideBar extends Component {
@@ -18,7 +17,6 @@ export class LeftSideBar extends Component {
       <nav>
         <Link to="/">
           <h1 className="logo">
-            {/* <img src={logo} alt="Logo"/> */}
             Ralabsgram
           </h1>
         </Link>
