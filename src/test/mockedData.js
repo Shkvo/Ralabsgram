@@ -21,7 +21,24 @@ export const store = mockStore({
         follows: 14
       }
     },
-    media: []
+    media: [
+      {
+        id: 5,
+        images: {
+          standard_resolution: {
+            url: 'some first url'
+          }
+        }
+      },
+      {
+        id: 13,
+        images: {
+          standard_resolution: {
+            url: 'some second url'
+          }
+        }
+      },
+    ]
   },
   media: {
     details: {},
