@@ -1,26 +1,26 @@
 import React from 'react';
-import Auth from '../../components/Auth';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
-import { store } from '../mockedData';
-
-let wrapper = null;
+import Auth from '../../components/Auth';
+import store from '../mockedData';
 
 describe('<Auth /> component:', () => {
+  let wrapper;
+
   beforeEach(() => {
     wrapper = mount(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/']}>
           <Auth />
         </MemoryRouter>
-      </Provider>
+      </Provider>,
     );
   });
 
   test('Renders properly without crashing', () => {
     const app = wrapper.find('Auth');
 
-    expect(app.exists()).toBeTruthy;
+    expect(app.exists()).toBeTruthy();
     expect(app.name()).toEqual('Auth');
   });
 
@@ -32,17 +32,17 @@ describe('<Auth /> component:', () => {
   });
 
   test('Has proper class properties', () => {
-    expect(wrapper.find('Auth').instance().access_token).toEqual('');
+    expect(wrapper.find('Auth').instance().accessToken).toEqual('');
   });
 
   test('Has proper props', () => {
-    expect(wrapper.find('Auth').instance().props.isLogged).toBeFalsy;
+    expect(wrapper.find('Auth').instance().props.isLogged).toBeFalsy();
     expect(wrapper.find('Auth').instance().props.login).toBeInstanceOf(
-      Function
+      Function,
     );
   });
 
   test('Has no state', () => {
-    expect(wrapper.find('Auth').instance().state).toBeNull;
+    expect(wrapper.find('Auth').instance().state).toBeNull();
   });
 });

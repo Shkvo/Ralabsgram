@@ -1,49 +1,51 @@
 import React from 'react';
-import App from '../../components/App';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
-import { store } from '../mockedData';
-
-let wrapper = null;
+import App from '../../components/App';
+import store from '../mockedData';
 
 describe('<App /> component:', () => {
+  let wrapper;
+
   beforeEach(() => {
     wrapper = mount(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/']}>
           <App />
         </MemoryRouter>
-      </Provider>
+      </Provider>,
     );
   });
 
   test('Renders properly without crashing', () => {
     const app = wrapper.find('App');
 
-    expect(app.exists()).toBeTruthy;
-    expect(app.hasClass('app')).toBeTruthy;
+    expect(app.exists()).toBeTruthy();
+    expect(app.children().hasClass('app')).toBeTruthy();
   });
 
   test('Renders children properly', () => {
     const children = wrapper.find('App').children();
 
     expect(children.children().length).toEqual(2);
+
     expect(
       children
         .childAt(0)
         .find('LeftSideBar')
-        .exists()
-    ).toBeTruthy;
+        .exists(),
+    ).toBeTruthy();
 
     expect(children.childAt(1).name()).toEqual('Switch');
     expect(children.childAt(1).children().length).toEqual(1);
+
     expect(
       children
         .childAt(1)
         .children()
         .find('Feed')
-        .exists()
-    ).toBeTruthy;
+        .exists(),
+    ).toBeTruthy();
   });
 
   test('Has proper props', () => {
@@ -51,6 +53,6 @@ describe('<App /> component:', () => {
   });
 
   test('Has no state', () => {
-    expect(wrapper.find('App').instance().state).toBeNull;
+    expect(wrapper.find('App').instance().state).toBeNull();
   });
 });

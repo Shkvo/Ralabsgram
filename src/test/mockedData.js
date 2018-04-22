@@ -5,7 +5,7 @@ const saga = createSagaMiddleware();
 const middlewares = [saga];
 const mockStore = configureStore(middlewares);
 
-export const store = mockStore({
+export default mockStore({
   user: {
     isLogged: false,
     access_token: '',
@@ -18,31 +18,53 @@ export const store = mockStore({
       counts: {
         media: 10,
         followed_by: 34,
-        follows: 14
-      }
+        follows: 14,
+      },
     },
     media: [
       {
         id: 5,
         images: {
           standard_resolution: {
-            url: 'some first url'
-          }
-        }
+            url: 'some first url',
+          },
+        },
       },
       {
         id: 13,
         images: {
           standard_resolution: {
-            url: 'some second url'
-          }
-        }
+            url: 'some second url',
+          },
+        },
       },
-    ]
+    ],
   },
   media: {
-    details: {},
+    details: {
+      id: 5,
+      images: {
+        standard_resolution: {
+          url: 'some first url',
+        },
+      },
+      user: {
+        id: 4,
+        profile_picture: 'test picture url',
+        username: 'test name',
+        bio: 'test bio',
+        website: 'test website',
+        counts: {
+          media: 10,
+          followed_by: 34,
+          follows: 14,
+        },
+      },
+      location: {
+        name: 'test location name',
+      },
+    },
     comments: [],
-    likes: []
-  }
+    likes: [],
+  },
 });

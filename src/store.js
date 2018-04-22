@@ -7,23 +7,25 @@ import sagas from './actions';
 const saga = createSagaMiddleware();
 
 const initialState = {
-	user: {
-		isLogged: false,
-		access_token: '',
-		info: {},
-		media: []
-	},
-	media: {
-		details: {},
-		comments: [],
-		likes: []
-	},
+  user: {
+    isLogged: false,
+    access_token: '',
+    info: {},
+    media: [],
+  },
+  media: {
+    details: {},
+    comments: [],
+    likes: [],
+  },
 };
 
-const middlewares = applyMiddleware(
-  saga
-);
+const middlewares = applyMiddleware(saga);
 
-export default createStore(reducer, initialState, composeWithDevTools(middlewares));
+export default createStore(
+  reducer,
+  initialState,
+  composeWithDevTools(middlewares),
+);
 
 saga.run(sagas);

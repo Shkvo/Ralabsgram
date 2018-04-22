@@ -10,6 +10,6 @@ import media from './media';
  */
 
 export default combineReducers({
-	user,
-	media
+  user,
+  media,
 });

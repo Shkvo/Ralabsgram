@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
-import LeftSideBar from './LeftSideBar';
+import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import LeftSideBar from './LeftSideBar';
+import MediaDetails from './MediaDetails';
 import '../css/App.css';
 import Feed from './Feed';
 import PageNotFound from './404';
-import MediaDetails from  './MediaDetails'
-import { connect } from 'react-redux';
 
 export class App extends Component {
-
   render() {
     return (
       <div className="app">
         <LeftSideBar {...this.props} />
         <Switch>
-        	<Route exact path="/" component={() => <Feed {...this.props} />}/>
-          <Route path="/media/:id" component={() => <MediaDetails {...this.props} />}/>
+          <Route exact path="/" component={() => <Feed {...this.props} />} />
+          <Route
+            path="/media/:id"
+            component={() => <MediaDetails {...this.props} />}
+          />
           <Route path="*" component={PageNotFound} />
         </Switch>
       </div>
@@ -24,9 +27,15 @@ export class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	accessToken: state.user.access_token
+  accessToken: state.user.access_token,
 });
 
-export default withRouter(connect(
-	mapStateToProps
-)(App));
+App.propTypes = {
+  accessToken: PropTypes.string,
+};
+
+App.defaultProps = {
+  accessToken: '',
+};
+
+export default withRouter(connect(mapStateToProps)(App));

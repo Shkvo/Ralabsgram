@@ -1,11 +1,47 @@
 import React from 'react';
-import PageNotFound from '../../components/404';
+import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MediaDetails from '../../components/MediaDetails';
+import store from '../mockedData';
 
-describe('<PageNotFound /> component:', () => {
+describe('<MediaDetails /> component:', () => {
+  let wrapper;
+  let children;
 
-  test('Component renders properly without crashing', () => {
-    const wrapper = shallow(<PageNotFound />);
-    expect(wrapper.name()).toEqual('h1');
+  beforeEach(() => {
+    wrapper = mount(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/']}>
+          <MuiThemeProvider>
+            <MediaDetails
+              location={{
+                pathname: 'some/test/location',
+              }}
+            />
+          </MuiThemeProvider>
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    children = wrapper.find('MediaDetails').children();
   });
 
+  test('Component renders properly without crashing', () => {
+    expect(wrapper.find('MediaDetails').exists()).toBeTruthy();
+  });
+
+  describe('Renders children properly', () => {
+    test('Renders <div> with class .media-details as wrapper', () => {
+      expect(children.length).toEqual(1);
+      expect(children.name()).toEqual('div');
+      expect(children.hasClass('media-details')).toBeTruthy();
+    });
+
+    test('Renders <div> with class .media-details as wrapper', () => {
+      expect(children.length).toEqual(1);
+      expect(children.name()).toEqual('div');
+      expect(children.hasClass('media-details')).toBeTruthy();
+    });
+  });
 });

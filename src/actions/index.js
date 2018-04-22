@@ -9,8 +9,5 @@ import mediaSaga from './media';
  */
 
 export default function* rootSaga() {
-  yield all([
-    userSaga(),
-    mediaSaga()
-  ]);
+  yield all([userSaga(), mediaSaga()]);
 }

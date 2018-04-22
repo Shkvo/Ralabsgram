@@ -5,8 +5,8 @@ import {
   DELETE_MEDIA_LIKE,
   GET_MEDIA_LIKES_SUCCESS,
   GET_MEDIA_DETAILS_SUCCESS,
-  GET_MEDIA_COMMENTS_SUCCESS
-} from "../actions/types";
+  GET_MEDIA_COMMENTS_SUCCESS,
+} from '../actions/types';
 
 /**
  * @function mediaReducer
@@ -20,25 +20,25 @@ export default (state = {}, action) => {
     case GET_MEDIA_DETAILS_SUCCESS:
       return {
         ...state,
-        details: action.payload
+        details: action.payload,
       };
 
     case GET_MEDIA_COMMENTS_SUCCESS:
       return {
         ...state,
-        comments: action.payload
+        comments: action.payload,
       };
 
     case GET_MEDIA_LIKES_SUCCESS:
       return {
         ...state,
-        likes: action.payload
+        likes: action.payload,
       };
 
     case POST_MEDIA_COMMENT:
       return {
         ...state,
-        comments: [...state.comments].concat(action.payload)
+        comments: [...state.comments].concat(action.payload),
       };
 
     case DELETE_MEDIA_COMMENT:
@@ -47,7 +47,7 @@ export default (state = {}, action) => {
 
       return {
         ...state,
-        comments
+        comments,
       };
 
     case POST_MEDIA_LIKE:
@@ -57,17 +57,17 @@ export default (state = {}, action) => {
         ...state,
         likes: [...state.likes].concat({
           id,
-          username
-        })
+          username,
+        }),
       };
 
     case DELETE_MEDIA_LIKE:
       const likes = [...state.likes];
-      const filteredLikes = likes.filter(like => like.id !== action.payload);
+      const filteredLikes = likes.filter((like) => like.id !== action.payload);
 
       return {
         ...state,
-        likes: filteredLikes
+        likes: filteredLikes,
       };
 
     default:

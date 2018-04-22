@@ -10,7 +10,7 @@ describe('<Spinner /> component:', () => {
 
   test('renders properly without crashing', () => {
     expect(wrapper.name()).toEqual('div');
-    expect(wrapper.hasClass('spinner-wrapper')).toBeTruthy;
+    expect(wrapper.hasClass('spinner-wrapper')).toBeTruthy();
   });
 
   test('children renders properly', () => {

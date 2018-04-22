@@ -9,10 +9,10 @@ import App from './components/App';
 
 ReactDOM.render(
   <Provider store={store}>
-  	<BrowserRouter>
-    	<Auth>
-    		<App />
-    	</Auth>
+    <BrowserRouter>
+      <Auth>
+        <App />
+      </Auth>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root'),

@@ -1,7 +1,7 @@
 import {
   LOGIN,
   GET_USER_INFO_SUCCESS,
-  GET_USER_MEDIA_SUCCESS
+  GET_USER_MEDIA_SUCCESS,
 } from '../actions/types';
 
 /**
@@ -13,11 +13,10 @@ import {
 
 export default (state = {}, action) => {
   switch (action.type) {
-
     case LOGIN:
       return {
-      	...state,
-      	isLogged: !state.isLogged,
+        ...state,
+        isLogged: !state.isLogged,
         access_token: action.payload,
       };
 
