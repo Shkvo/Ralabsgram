@@ -5,7 +5,103 @@ const saga = createSagaMiddleware();
 const middlewares = [saga];
 const mockStore = configureStore(middlewares);
 
-export default mockStore({
+export const props = {
+  accessToken: '',
+  deleteMediaComment() {},
+  deleteMediaLike() {},
+  getMediaComments() {},
+  getMediaDetails() {},
+  getMediaLikes() {},
+  postMediaComment() {},
+  postMediaLike() {},
+  history: '',
+  location: {
+    pathname: 'some/test/location',
+  },
+  mediaComments: [
+    {
+      from: {
+        username: 'somename',
+      },
+      text: 'test comment text',
+    },
+    {
+      from: {
+        username: 'somename',
+      },
+      text: 'test comment text',
+    },
+    {
+      from: {
+        username: 'somename',
+      },
+      text: 'test comment text',
+    },
+    {
+      from: {
+        username: 'somename',
+      },
+      text: 'test comment text',
+    },
+  ],
+  mediaDetails: {
+    id: 5,
+    images: {
+      standard_resolution: {
+        url: 'some first url',
+      },
+    },
+    location: {
+      name: 'test location name',
+    },
+    user: {
+      bio: 'test bio',
+      counts: {
+        followed_by: 34,
+        follows: 14,
+        media: 10,
+      },
+      id: 4,
+      profile_picture: 'test picture url',
+      username: 'test name',
+      website: 'test website',
+    },
+  },
+  mediaLikes: [
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+    {
+      id: 4,
+    },
+    {
+      id: 5,
+    },
+    {
+      id: 6,
+    },
+  ],
+  userInfo: {
+    bio: 'test bio',
+    counts: {
+      followed_by: 34,
+      follows: 14,
+      media: 10,
+    },
+    id: 4,
+    profile_picture: 'test picture url',
+    username: 'test name',
+    website: 'test website',
+  },
+};
+
+export const store = mockStore({
   user: {
     isLogged: false,
     access_token: '',
@@ -64,7 +160,51 @@ export default mockStore({
         name: 'test location name',
       },
     },
-    comments: [],
-    likes: [],
+    comments: [
+      {
+        from: {
+          username: 'somename',
+        },
+        text: 'test comment text',
+      },
+      {
+        from: {
+          username: 'somename',
+        },
+        text: 'test comment text',
+      },
+      {
+        from: {
+          username: 'somename',
+        },
+        text: 'test comment text',
+      },
+      {
+        from: {
+          username: 'somename',
+        },
+        text: 'test comment text',
+      },
+    ],
+    likes: [
+      {
+        id: 1,
+      },
+      {
+        id: 2,
+      },
+      {
+        id: 3,
+      },
+      {
+        id: 4,
+      },
+      {
+        id: 5,
+      },
+      {
+        id: 6,
+      },
+    ],
   },
 });

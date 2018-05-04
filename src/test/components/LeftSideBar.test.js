@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
 import LeftSideBar from '../../components/LeftSideBar';
-import store from '../mockedData';
+import { store } from '../mockedData';
 
 describe('<LeftSideBar /> component:', () => {
   let wrapper;

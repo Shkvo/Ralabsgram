@@ -96,7 +96,7 @@ export class MediaDetails extends Component {
     }
 
     const comments = mediaComments.map((comment, index) => (
-      <p key={index}>
+      <div key={index}>
         <span className="user-wrapper">
           <Link to="/">{comment.from.username}</Link>
           {/* eslint-disable-next-line */}
@@ -104,8 +104,8 @@ export class MediaDetails extends Component {
             <i className="fas fa-times" />
           </div>
         </span>
-        {comment.text}
-      </p>
+        <span>{comment.text}</span>
+      </div>
     ));
 
     return (
@@ -228,9 +228,7 @@ MediaDetails.propTypes = {
     pathname: PropTypes.string,
   }).isRequired,
   accessToken: PropTypes.string,
-  history: PropTypes.shape({
-    go: PropTypes.func,
-  }),
+  history: PropTypes.string,
 };
 
 MediaDetails.defaultProps = {

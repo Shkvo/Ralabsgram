@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
 import App from '../../components/App';
-import store from '../mockedData';
+import { store } from '../mockedData';
 
 describe('<App /> component:', () => {
   let wrapper;
